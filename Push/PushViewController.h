@@ -10,4 +10,7 @@
 
 @interface PushViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UILabel *label;
+@property (strong, nonatomic) IBOutlet UILabel *label2;
+@property (strong, nonatomic) IBOutlet UILabel *label3;
 @end

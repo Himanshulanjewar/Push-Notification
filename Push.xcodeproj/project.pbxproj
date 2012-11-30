@@ -22,13 +22,13 @@
 		4E4BBC2B163FE4170027B4E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4E4BBC2D163FE4170027B4E8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4E4BBC2F163FE4170027B4E8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		4E4BBC33163FE4170027B4E8 /* Push-Info.plist */ = {isa = PBXFileReference; path = "Push-Info.plist"; sourceTree = "<group>"; };
+		4E4BBC33163FE4170027B4E8 /* Push-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Push-Info.plist"; sourceTree = "<group>"; };
 		4E4BBC35163FE4170027B4E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4E4BBC37163FE4170027B4E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4E4BBC39163FE4170027B4E8 /* Push-Prefix.pch */ = {isa = PBXFileReference; path = "Push-Prefix.pch"; sourceTree = "<group>"; };
-		4E4BBC3A163FE4170027B4E8 /* PushAppDelegate.h */ = {isa = PBXFileReference; path = PushAppDelegate.h; sourceTree = "<group>"; };
+		4E4BBC39163FE4170027B4E8 /* Push-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Push-Prefix.pch"; sourceTree = "<group>"; };
+		4E4BBC3A163FE4170027B4E8 /* PushAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PushAppDelegate.h; sourceTree = "<group>"; };
 		4E4BBC3B163FE4170027B4E8 /* PushAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PushAppDelegate.m; sourceTree = "<group>"; };
-		4E4BBC3D163FE4170027B4E8 /* PushViewController.h */ = {isa = PBXFileReference; path = PushViewController.h; sourceTree = "<group>"; };
+		4E4BBC3D163FE4170027B4E8 /* PushViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PushViewController.h; sourceTree = "<group>"; };
 		4E4BBC3E163FE4170027B4E8 /* PushViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PushViewController.m; sourceTree = "<group>"; };
 		4E4BBC41163FE4170027B4E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PushViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -239,10 +239,16 @@
 		4E4BBC46163FE4170027B4E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Himanshu Singh (AS8MJJR5J2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Himanshu Singh (AS8MJJR5J2)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Push/Push-Prefix.pch";
 				INFOPLIST_FILE = "Push/Push-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3AD69F77-5708-4197-B02D-C9D46AC8BF1A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3AD69F77-5708-4197-B02D-C9D46AC8BF1A";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -250,10 +256,16 @@
 		4E4BBC47163FE4170027B4E8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Himanshu Singh (AS8MJJR5J2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Himanshu Singh (AS8MJJR5J2)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Push/Push-Prefix.pch";
 				INFOPLIST_FILE = "Push/Push-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3AD69F77-5708-4197-B02D-C9D46AC8BF1A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3AD69F77-5708-4197-B02D-C9D46AC8BF1A";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -277,6 +289,7 @@
 				4E4BBC47163FE4170027B4E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

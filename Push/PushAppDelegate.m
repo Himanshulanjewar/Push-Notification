@@ -11,18 +11,98 @@
 #import "PushViewController.h"
 
 @implementation PushAppDelegate
-
+@synthesize stringDeviceToken,oneAssociates;
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    name=@"himanshulanjewar";
+    NSString *himanshulanjewar=@"himanshulanjewar";
+    [prefs setObject:himanshulanjewar forKey:@"himanshulanjewar"];
+    
+    device=@"0f744707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bbad78";
+    [prefs setObject:device forKey:@"deviceHardCoded"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.viewController = [[PushViewController alloc] initWithNibName:@"PushViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    
+    
+    if (launchOptions != nil)
+	{
+		NSDictionary* dictionary = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+		if (dictionary != nil)
+		{
+			NSLog(@"Launched from push notification: %@", dictionary);
+            [UIApplication sharedApplication].applicationIconBadgeNumber++;
+			[self addMessageFromRemoteNotification:dictionary updateUI:NO];
+		}
+	}
+
+        
     return YES;
+}
+
+- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
+{
+	NSLog(@"Received notification: %@", userInfo);
+    [UIApplication sharedApplication].applicationIconBadgeNumber++;
+	//[self addMessageFromRemoteNotification:userInfo updateUI:YES];
+}
+
+- (void)addMessageFromRemoteNotification:(NSDictionary*)userInfo updateUI:(BOOL)updateUI
+{
+	// Create a new Message object
+	
+    
+	// The JSON payload is already converted into an NSDictionary for us.
+	// We are interested in the contents of the alert message.
+	NSString* alertValue = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
+    
+	// The server API formatted the alert text as "sender: message", so we
+	// split that up into a sender name and the actual message text.
+	
+	
+      NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setObject:alertValue forKey:@"alertValue"];
+    
+	// Add the Message to the data model's list of messages
+	
+    
+	// If we are called from didFinishLaunchingWithOptions, we should not
+	// tell the ChatViewController's table view to insert the new Message.
+	// At that point, the table view isn't loaded yet and it gets confused.
+	    
+
+}
+
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
+{
+	NSLog(@"My token is: %@", deviceToken);
+    NSString *string = [[NSString alloc] initWithData:deviceToken encoding:NSUTF8StringEncoding];
+    
+    if (string.length==device.length) {
+        
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Alert View" message:string delegate:self cancelButtonTitle:@"Get Device Token" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setObject:string forKey:@"deviceToken"];
+    [prefs synchronize];
+    
+}
+
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+{
+	NSLog(@"Failed to get token, error: %@", error);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
